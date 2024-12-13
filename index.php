@@ -6,12 +6,10 @@ $sql = "SELECT * FROM country WHERE continent_id = 1";
 $res = mysqli_query($conn, $sql);
 $countries = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
+
 ?>
 
 <?php include "./inc/header.php" ?>
-<header class="d-flex justify-content-center container mt-3">
-    <h1>Africa Géo-Junior</h1>
-</header>
 <main class="container mt-4">
     <div class="mb-5 d-flex mt-5">
         <div class="ms-auto">
@@ -55,10 +53,10 @@ $countries = mysqli_fetch_all($res, MYSQLI_ASSOC);
     </div>
     <div class="row">
         <?php foreach ($countries as $index => $country): ?>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 col-xl-3 mb-4">
                 <div class="card" style="width: 18rem;">
                     <?php if (!empty($country["image"])): ?>
-                        <img src="<?php echo $country["image"]; ?>" class="card-img-top" alt="<?php echo $country['name']; ?>">
+                        <img src="<?php echo $country["image"]; ?>" class="card-img-top" style="height:200px" alt="<?php echo $country['name']; ?>">
                     <?php else: ?>
                         <div class="position-relative">
                             <img src="./assets/bg-black.webp" class="card-img-top" alt="Placeholder">

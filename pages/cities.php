@@ -65,8 +65,9 @@ if (isset($_GET["countryId"]) && isset($_GET["countryName"])) {
         </div>
     </div>
     <div class="row">
+        <?php if(count($cities)>= 1)  :?>
         <?php foreach ($cities as $index => $city): ?>
-            <div class="mb-4 col-md-4">
+            <div class="mb-4 col-md-4 col-xl-3">
                 <div class="card" style="width: 18rem;">
                     <div class="relative">
                         <?php if ($city['type'] == "Capital"): ?>
@@ -76,10 +77,10 @@ if (isset($_GET["countryId"]) && isset($_GET["countryName"])) {
                         <?php endif; ?>
 
                         <?php if (!empty($city["image"])): ?>
-                            <img src="<?php echo $city["image"]; ?>" class="card-img-top" alt="<?php echo $city['name']; ?>">
+                            <img src="<?php echo $city["image"]; ?>" class="card-img-top" style="height: 200px;" alt="<?php echo $city['name']; ?>">
                         <?php else: ?>
                             <div class="position-relative">
-                                <img src="../assets/bg-black.webp" class="card-img-top" alt="Placeholder">
+                                <img src="../assets/bg-black.webp" class="card-img-top" style="height: 200px;" alt="Placeholder">
                                 <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex justify-content-center align-items-center text-white">
                                     No Image
                                 </div>
@@ -87,7 +88,7 @@ if (isset($_GET["countryId"]) && isset($_GET["countryName"])) {
                         <?php endif; ?>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-primary"><?php echo $city['name']; ?></h5>
+                        <h5 class="card-title text-primary"><?= $city['name']; ?></h5>
                         <p class="card-text"><?php echo $city["description"] ?></p>
                         <div class="d-flex">
                             <form action="../actions/cities/delete.php" method="POST">
@@ -139,6 +140,9 @@ if (isset($_GET["countryId"]) && isset($_GET["countryName"])) {
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php else :?>
+            <h4 class="text-center mt-5">No city is found.</h4>
+        <?php endif ?>
     </div>
     </div>
 </main>

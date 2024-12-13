@@ -19,10 +19,8 @@
         
         
         
-        echo "$name /" . "$description /" . "$type /". "$imageUrl /". "$country_id /";
-        if(empty($name) || empty($description) || empty($type) || empty($imageUrl) ){
+        if(empty($name) || empty($description) || empty($type) ){
             echo "somthing empty";
-            $nameError = $descriptionError = $typeError = "Field is required";
             return;
         }
         $sql = "INSERT INTO city (name,description,type,image,country_id) VALUES ('$name','$description','$type','$imageUrl','$country_id');";
